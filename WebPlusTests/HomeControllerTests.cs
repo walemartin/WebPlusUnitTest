@@ -11,10 +11,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace WebPlus.Tests
 {
-    
+    [TestClass]
     public class HomeControllerTests
     {
-        [Fact]
+        [TestMethod]
         public void Adding_Funds_Updates_Balance()
         {
             // ARRANGE
@@ -24,10 +24,10 @@ namespace WebPlus.Tests
             account.Add(100);
 
             // ASSERT
-            Assert.Equals(1100, account.Balance);
+            Assert.AreEqual(1100, account.Balance);
         }
 
-        [Fact]
+        [TestMethod]
         public void Adding_Negative_Funds_Throws()
         {
             // ARRANGE
@@ -37,7 +37,7 @@ namespace WebPlus.Tests
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => account.Add(-100));
         }
 
-        [Fact]
+        [TestMethod]
         public void Withdrawing_Funds_Updates_Balance()
         {
             // ARRANGE
@@ -47,10 +47,10 @@ namespace WebPlus.Tests
             account.Withdraw(100);
 
             // ASSERT
-            Assert.Equals(900, account.Balance);
+            Assert.AreEqual(900, account.Balance);
         }
 
-        [Fact]
+        [TestMethod]
         public void Withdrawing_Negative_Funds_Throws()
         {
             // ARRANGE
@@ -60,7 +60,7 @@ namespace WebPlus.Tests
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => account.Withdraw(-100));
         }
 
-        [Fact]
+        [TestMethod]
         public void Withdrawing_More_Than_Funds_Throws()
         {
             // ARRANGE
@@ -70,7 +70,7 @@ namespace WebPlus.Tests
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => account.Withdraw(2000));
         }
 
-        [Fact]
+        [TestMethod]
         public void Transfering_Funds_Updates_Both_Accounts()
         {
             // ARRANGE
@@ -81,11 +81,11 @@ namespace WebPlus.Tests
             account.TransferFundsTo(otherAccount, 500);
 
             // ASSERT
-            Assert.Equals(500, account.Balance);
-            Assert.Equals(500, otherAccount.Balance);
+            Assert.AreEqual(500, account.Balance);
+            Assert.AreEqual(500, otherAccount.Balance);
         }
 
-        [Fact]
+        [TestMethod]
         public void TransferFundsTo_Non_Existing_Account_Throws()
         {
             // ARRANGE
